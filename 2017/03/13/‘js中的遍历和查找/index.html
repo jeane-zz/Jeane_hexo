@@ -1,0 +1,698 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/Jeane_hexo/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/Jeane_hexo/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/Jeane_hexo/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/Jeane_hexo/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="对计算式进行处理，其实就是对字符串进行遍历，然后再按照规则进行匹配的过程。在做 计算器 的过程中，我先后遇到了之前处理问题时不曾考虑过的情况：
+
+遍历数组用哪个？ 
+为什么我写的循环break不能正确响应？
+明明只需要查找一个元素，却要要把整个数组都遍历一次，代价太大了吧？
+
+其实，js提供了很多很好用的接口，只是平时的一些编码习惯使我们在遇到某种情况时，下意识的的就只能反应到一种或两种常用方法，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js中的遍历和查找">
+<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/13/‘js中的遍历和查找/index.html">
+<meta property="og:site_name" content="Jeane's Blog">
+<meta property="og:description" content="对计算式进行处理，其实就是对字符串进行遍历，然后再按照规则进行匹配的过程。在做 计算器 的过程中，我先后遇到了之前处理问题时不曾考虑过的情况：
+
+遍历数组用哪个？ 
+为什么我写的循环break不能正确响应？
+明明只需要查找一个元素，却要要把整个数组都遍历一次，代价太大了吧？
+
+其实，js提供了很多很好用的接口，只是平时的一些编码习惯使我们在遇到某种情况时，下意识的的就只能反应到一种或两种常用方法，">
+<meta property="og:updated_time" content="2017-03-13T14:08:58.225Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js中的遍历和查找">
+<meta name="twitter:description" content="对计算式进行处理，其实就是对字符串进行遍历，然后再按照规则进行匹配的过程。在做 计算器 的过程中，我先后遇到了之前处理问题时不曾考虑过的情况：
+
+遍历数组用哪个？ 
+为什么我写的循环break不能正确响应？
+明明只需要查找一个元素，却要要把整个数组都遍历一次，代价太大了吧？
+
+其实，js提供了很多很好用的接口，只是平时的一些编码习惯使我们在遇到某种情况时，下意识的的就只能反应到一种或两种常用方法，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Jeane_hexo/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/13/‘js中的遍历和查找/"/>
+
+
+
+
+
+  <title> js中的遍历和查找 | Jeane's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Jeane_hexo/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeane's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Jeane_hexo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Jeane_hexo/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Jeane_hexo/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/13/‘js中的遍历和查找/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeane">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeane's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                js中的遍历和查找
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-13T18:45:34+08:00">
+                2017-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>对计算式进行处理，其实就是对字符串进行遍历，然后再按照规则进行匹配的过程。<br>在做<a href="https://jeane-zz.github.io/ife/calc/calc.html"> 计算器 </a>的过程中，我先后遇到了之前处理问题时不曾考虑过的情况：</p>
+<ol>
+<li>遍历数组用哪个？ </li>
+<li>为什么我写的循环break不能正确响应？</li>
+<li>明明只需要查找一个元素，却要要把整个数组都遍历一次，代价太大了吧？</li>
+</ol>
+<p>其实，js提供了很多很好用的接口，只是平时的一些编码习惯使我们在遇到某种情况时，下意识的的就只能反应到一种或两种常用方法，但这种方法却不一定是当前最合适的。<br>书到用时方恨少，方法也是这样。js的各种API才是提高编码效率的利器啊！<br>借这个机会，我认真梳理了js中常见的遍历和查找方法。现将常用的遍历和查找方法做了简单的对比，如下：</p>
+<blockquote>
+<h2 id="遍历函数"><a href="#遍历函数" class="headerlink" title="遍历函数"></a>遍历函数</h2></blockquote>
+<h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for()循环"></a>for()循环</h3><p>主要用于数组遍历<br>按序传入index，定位到需要操作的元素<br>可以通过break，continue，return打断</p>
+<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a>forEach()</h3><p>Array.prototype.forEach()<br>按序传入：当前值，索引，数组<br>不支持打断，只能用异常处理，将forEach代码块包在try语句块中<br>若循环过程中数组发生了删除操作，某些项目可能被forEach忽略</p>
+<h3 id="for-…-in"><a href="#for-…-in" class="headerlink" title="for … in"></a>for … in</h3><p>以<strong>任意</strong>序迭代对象的可枚举<strong>属性名</strong>（所有可枚举属性和继承可枚举属性）<br>不应该用来迭代一个下标顺很重要的数组，因为for … in 是无序的<br>同时，循环的属性名为字符串<br>若循环过程中对象发生了增、删、改操作，for … in 不保证得到期望结果<br>使用 break 和continue 打断</p>
+<ul>
+<li>若只迭代对象本身的属性<br>使用 getOwnPropertyNames() 或hasOwnProperty()</li>
+<li>属性是否可枚举<br>使用 obj.propertyIsEnumerable()</li>
+</ul>
+<h3 id="for-…-of"><a href="#for-…-of" class="headerlink" title="for … of"></a>for … of</h3><p>在可迭代对象上创建循环，遍历当前对象上的<strong>属性值</strong><br>可迭代对象：Array、 Map、 Set、 String、 arguments等<br>推荐在遍历数组时使用<br>支持打断 break、 continue </p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3><p>Array.prototype.map()<br>通过 in polyfill<br>创建一个新的数组，存放数组中每个元素执行函数后的结果</p>
+<h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3><p>Array.prototype.every()<br>通过 for循环 polyfill<br>意在测试数组中所有元素是否都通过了测试 返回 布尔值<br>可以被打断 return<br>相关函数 some() 有一个元素满足条件即为TRUE<br>        filter() 过滤函数</p>
+<h3 id="jQuery-each-each"><a href="#jQuery-each-each" class="headerlink" title="jQuery.each() === $.each()"></a>jQuery.each() === $.each()</h3><p>遍历数组和对象<br>return 打断</p>
+<h3 id="selector-each"><a href="#selector-each" class="headerlink" title="$(selector).each()"></a>$(selector).each()</h3><p>遍历dom元素<br>return 打断</p>
+<p>jQuery也有map方法</p>
+<blockquote>
+<h2 id="匹配查找方法"><a href="#匹配查找方法" class="headerlink" title="匹配查找方法"></a>匹配查找方法</h2></blockquote>
+<h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><p>严格来说 in 并不是遍历方法，主要用于查找<br>当遍历的目的在于查找时，使用in会比循环更高效一些，<br>右操作数必须为 包装对象 Array Object String<br>原型链上的属性也会返回true</p>
+<h3 id="has"><a href="#has" class="headerlink" title="has()"></a>has()</h3><p>Map、 Set 对象方法。是否存在指定元素<br>传入 键值(value)</p>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf()"></a>indexOf()</h3><p>String、 Array对象方法。 返回查找元素的 index值 </p>
+<h3 id="find-callback"><a href="#find-callback" class="headerlink" title="find(callback)"></a>find(callback)</h3><p>Array对象方法。 返回满足callback的第一个元素的索引</p>
+<h3 id="findIndex-callback"><a href="#findIndex-callback" class="headerlink" title="findIndex(callback)"></a>findIndex(callback)</h3><p>Array对象方法。 返回满足callback的第一个元素的索引</p>
+<h3 id="includes-value"><a href="#includes-value" class="headerlink" title="includes(value)"></a>includes(value)</h3><p>String、 Array对象方法。 判断数组是否包含当前值</p>
+<p>后续有其他的相似功能的方法会继续添加进来的~~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Jeane_hexo/2017/03/10/中缀表达式转化为后缀表达式/" rel="next" title="中缀表达式转化为后缀表达式">
+                <i class="fa fa-chevron-left"></i> 中缀表达式转化为后缀表达式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400"
+               alt="Jeane" />
+          <p class="site-author-name" itemprop="name">Jeane</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/Jeane_hexo/archives">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历函数"><span class="nav-number">1.</span> <span class="nav-text">遍历函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for-循环"><span class="nav-number">1.1.</span> <span class="nav-text">for()循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach"><span class="nav-number">1.2.</span> <span class="nav-text">forEach()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-…-in"><span class="nav-number">1.3.</span> <span class="nav-text">for … in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-…-of"><span class="nav-number">1.4.</span> <span class="nav-text">for … of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map"><span class="nav-number">1.5.</span> <span class="nav-text">map()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#every"><span class="nav-number">1.6.</span> <span class="nav-text">every()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jQuery-each-each"><span class="nav-number">1.7.</span> <span class="nav-text">jQuery.each() === $.each()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selector-each"><span class="nav-number">1.8.</span> <span class="nav-text">$(selector).each()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配查找方法"><span class="nav-number">2.</span> <span class="nav-text">匹配查找方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#in"><span class="nav-number">2.1.</span> <span class="nav-text">in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has"><span class="nav-number">2.2.</span> <span class="nav-text">has()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">2.3.</span> <span class="nav-text">indexOf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find-callback"><span class="nav-number">2.4.</span> <span class="nav-text">find(callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#findIndex-callback"><span class="nav-number">2.5.</span> <span class="nav-text">findIndex(callback)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#includes-value"><span class="nav-number">2.6.</span> <span class="nav-text">includes(value)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeane</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/Jeane_hexo/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
