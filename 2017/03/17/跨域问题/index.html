@@ -87,40 +87,22 @@
 
 
 
-<meta name="description" content="hexo 4000端口
-运行完hexo server给出正常提示后，在浏览器打开 http://localhost:4000
-然而并没有看到 Hello World，且页面显示一直在加载
-有一种可能的情况就是 4000端口被占用（福昕阅读器的默认端口也是4000）
-1hexo s -p 5000
-
-当然代码中的5000端口是可以任意更换的
-同步到github
-在github已经部署ok的情况下，以">
+<meta name="description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
+最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
+当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
 <meta property="og:type" content="article">
-<meta property="og:title" content="备忘录">
-<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/03/备忘录/index.html">
+<meta property="og:title" content="跨域问题入门篇">
+<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/17/跨域问题/index.html">
 <meta property="og:site_name" content="Jeane's Blog">
-<meta property="og:description" content="hexo 4000端口
-运行完hexo server给出正常提示后，在浏览器打开 http://localhost:4000
-然而并没有看到 Hello World，且页面显示一直在加载
-有一种可能的情况就是 4000端口被占用（福昕阅读器的默认端口也是4000）
-1hexo s -p 5000
-
-当然代码中的5000端口是可以任意更换的
-同步到github
-在github已经部署ok的情况下，以">
-<meta property="og:updated_time" content="2017-03-23T09:24:25.039Z">
+<meta property="og:description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
+最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
+当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
+<meta property="og:updated_time" content="2017-03-23T09:23:05.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="备忘录">
-<meta name="twitter:description" content="hexo 4000端口
-运行完hexo server给出正常提示后，在浏览器打开 http://localhost:4000
-然而并没有看到 Hello World，且页面显示一直在加载
-有一种可能的情况就是 4000端口被占用（福昕阅读器的默认端口也是4000）
-1hexo s -p 5000
-
-当然代码中的5000端口是可以任意更换的
-同步到github
-在github已经部署ok的情况下，以">
+<meta name="twitter:title" content="跨域问题入门篇">
+<meta name="twitter:description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
+最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
+当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
 
 
 
@@ -148,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/03/备忘录/"/>
+  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/17/跨域问题/"/>
 
 
 
 
 
-  <title> 备忘录 | Jeane's Blog </title>
+  <title> 跨域问题入门篇 | Jeane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -273,7 +255,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/03/备忘录/">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/17/跨域问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeane">
@@ -294,7 +276,7 @@
             
             
               
-                备忘录
+                跨域问题入门篇
               
             
           </h1>
@@ -309,8 +291,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T15:31:09+08:00">
-                2017-03-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T16:03:30+08:00">
+                2017-03-17
               </time>
             
 
@@ -345,23 +327,30 @@
       
 
       
-        <h2 id="hexo-4000端口"><a href="#hexo-4000端口" class="headerlink" title="hexo 4000端口"></a>hexo 4000端口</h2><ul>
-<li>运行完hexo server给出正常提示后，在浏览器打开 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></li>
-<li>然而并没有看到 Hello World，且页面显示一直在加载</li>
-<li><p>有一种可能的情况就是 4000端口被占用（福昕阅读器的默认端口也是4000）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s -p 5000</div></pre></td></tr></table></figure>
-</li>
-<li><p>当然代码中的5000端口是可以任意更换的</p>
-<h2 id="同步到github"><a href="#同步到github" class="headerlink" title="同步到github"></a>同步到github</h2></li>
-<li>在github已经部署ok的情况下，以后的每次提交，都要进行清空</li>
-<li>依次运行  <pre><code>hexo clean
-hexo generate
-hexo deploy 
-</code></pre></li>
+        <p>跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如<strong>“同源”</strong>，<strong>“JSONP”</strong>，<strong>“AJAX”</strong>……<br>然后我看完，还是觉得到底 <strong>什么是跨域</strong>啊！！！</p>
+<p>最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。</p>
+<p>当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外一个页面……</p>
+<p>好，那么这个时候问题来了，</p>
+<ul>
+<li>第二个页面怎么来的？</li>
 </ul>
-<h2 id="sublime编辑器鼠标不跟随"><a href="#sublime编辑器鼠标不跟随" class="headerlink" title="sublime编辑器鼠标不跟随"></a>sublime编辑器鼠标不跟随</h2><ul>
-<li>IMESupport插件 </li>
+<p>其实在我们的点击背后附加这一个链接，而这个链接就是第二个页面的地址，当然这个大家都知道，关键在于 <strong>浏览器</strong>本身并不会存储这第二个页面，它只能 <strong>向服务器去请求</strong>这个页面。</p>
+<ul>
+<li>怎么请求的呢？</li>
 </ul>
+<p>浏览器向服务器发送了一个 <strong>http请求</strong>，请注意是http请求，也就是Http Request，有点眼熟，我们还知道一个JavaScript对象叫做XMLHttpRequest，而AJAX正是封装了这个XMLHttpRequest对象实现了异步交互数据的功能。。。等等，我是不是发现了什么？</p>
+<ul>
+<li>言归正传，服务器收到http请求后呢？</li>
+</ul>
+<p>服务器把你要的 <strong>页面返回</strong>给浏览器，然后浏览器把 <strong>页面渲染</strong>在你的眼前，完事。</p>
+<p>当然事实上不会这么轻易的就返回给你的，浏览器得判断一下你有没有资格来拿这个页面，所谓 <strong>资格</strong>，简单来说，就是判断一下你（当前页面）和请求页面是不是一家的。<strong>判断标准</strong>就是你俩的<strong>域名(domain)</strong>，<strong>协议(protocol)</strong>，<strong>端口(port)</strong> 是不是一样的，一样的，你拿去，不一样，那对不起，你没有资格拿到这个页面。对，判断标准就是<strong>同源策略</strong>。当你拿不到这个页面的时候，就是出现了跨域的问题了。</p>
+<p>好，废话这么多，总结一下：</p>
+<ol>
+<li>跨域问题总是会出现在<strong>浏览器向服务器请求数据</strong>的时候</li>
+<li><strong>同源策略</strong>决定你需不需要跨域</li>
+<li><strong>AJAX</strong>总是出现在你向服务器要数据的时候，所以有些情况下AJAX和跨域扯到一起</li>
+</ol>
+<p>以上就是一个前端小白，对“跨域是什么”这个问题纠结的理解过程。。。</p>
 
       
     </div>
@@ -392,15 +381,15 @@ hexo deploy
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/Jeane_hexo/2017/03/13/‘js中的遍历和查找/" rel="next" title="js中的遍历和查找">
+                <i class="fa fa-chevron-left"></i> js中的遍历和查找
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Jeane_hexo/2017/03/10/中缀表达式转化为后缀表达式/" rel="prev" title="中缀表达式转化为后缀表达式">
-                中缀表达式转化为后缀表达式 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -447,17 +436,8 @@ hexo deploy
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400"
@@ -501,22 +481,6 @@ hexo deploy
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-4000端口"><span class="nav-number">1.</span> <span class="nav-text">hexo 4000端口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步到github"><span class="nav-number">2.</span> <span class="nav-text">同步到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sublime编辑器鼠标不跟随"><span class="nav-number">3.</span> <span class="nav-text">sublime编辑器鼠标不跟随</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
