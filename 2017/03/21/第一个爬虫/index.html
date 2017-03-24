@@ -87,22 +87,31 @@
 
 
 
-<meta name="description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
-最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
-当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
+<meta name="description" content="最近在写词典程序，基本上常用的功能也都实现了，在这个过程中也学到了很多东西，极大地满足了个人的虚荣心。不过这个词典的数据接口有些不好使，嵌套层次也比较深，用起来会有些不方便。
+好吧，自己写个爬虫试试，万一成功了呢？
+在网上看了好几个前辈的分享，最终选择了大神alsotang的版本来进行“抄袭”，因为他给的代码最简短了……
+
+需要node.js的环境
+npm 安装Express、 cheerio、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="跨域问题入门篇">
-<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/17/跨域问题/index.html">
+<meta property="og:title" content="第一个爬虫">
+<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/21/第一个爬虫/index.html">
 <meta property="og:site_name" content="Jeane's Blog">
-<meta property="og:description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
-最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
-当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
-<meta property="og:updated_time" content="2017-03-23T09:23:05.275Z">
+<meta property="og:description" content="最近在写词典程序，基本上常用的功能也都实现了，在这个过程中也学到了很多东西，极大地满足了个人的虚荣心。不过这个词典的数据接口有些不好使，嵌套层次也比较深，用起来会有些不方便。
+好吧，自己写个爬虫试试，万一成功了呢？
+在网上看了好几个前辈的分享，最终选择了大神alsotang的版本来进行“抄袭”，因为他给的代码最简短了……
+
+需要node.js的环境
+npm 安装Express、 cheerio、">
+<meta property="og:updated_time" content="2017-03-24T13:48:27.205Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跨域问题入门篇">
-<meta name="twitter:description" content="跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如“同源”，“JSONP”，“AJAX”……然后我看完，还是觉得到底 什么是跨域啊！！！
-最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。
-当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外">
+<meta name="twitter:title" content="第一个爬虫">
+<meta name="twitter:description" content="最近在写词典程序，基本上常用的功能也都实现了，在这个过程中也学到了很多东西，极大地满足了个人的虚荣心。不过这个词典的数据接口有些不好使，嵌套层次也比较深，用起来会有些不方便。
+好吧，自己写个爬虫试试，万一成功了呢？
+在网上看了好几个前辈的分享，最终选择了大神alsotang的版本来进行“抄袭”，因为他给的代码最简短了……
+
+需要node.js的环境
+npm 安装Express、 cheerio、">
 
 
 
@@ -130,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/17/跨域问题/"/>
+  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/21/第一个爬虫/"/>
 
 
 
 
 
-  <title> 跨域问题入门篇 | Jeane's Blog </title>
+  <title> 第一个爬虫 | Jeane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -255,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/17/跨域问题/">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/21/第一个爬虫/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeane">
@@ -276,7 +285,7 @@
             
             
               
-                跨域问题入门篇
+                第一个爬虫
               
             
           </h1>
@@ -291,8 +300,8 @@
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T16:03:30+08:00">
-                2017-03-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T19:34:01+08:00">
+                2017-03-21
               </time>
             
 
@@ -327,30 +336,23 @@
       
 
       
-        <p>跨域问题已经困扰我很久了，因为时不时总会在各种推送中看到这个问题，然而它到底是什么？仿佛所有的文章一提到跨域就会说相关的一些词汇，如<strong>“同源”</strong>，<strong>“JSONP”</strong>，<strong>“AJAX”</strong>……<br>然后我看完，还是觉得到底 <strong>什么是跨域</strong>啊！！！</p>
-<p>最近我终于，终于在自己的项目里遇到了跨域问题，好激动啊，终于有个机会来了解下跨域了。</p>
-<p>当我们在浏览网页的时候，最常做的操作就是点击，点击之后，浏览器会给出相应的反馈，比如跳转到另外一个页面……</p>
-<p>好，那么这个时候问题来了，</p>
-<ul>
-<li>第二个页面怎么来的？</li>
-</ul>
-<p>其实在我们的点击背后附加这一个链接，而这个链接就是第二个页面的地址，当然这个大家都知道，关键在于 <strong>浏览器</strong>本身并不会存储这第二个页面，它只能 <strong>向服务器去请求</strong>这个页面。</p>
-<ul>
-<li>怎么请求的呢？</li>
-</ul>
-<p>浏览器向服务器发送了一个 <strong>http请求</strong>，请注意是http请求，也就是Http Request，有点眼熟，我们还知道一个JavaScript对象叫做XMLHttpRequest，而AJAX正是封装了这个XMLHttpRequest对象实现了异步交互数据的功能。。。等等，我是不是发现了什么？</p>
-<ul>
-<li>言归正传，服务器收到http请求后呢？</li>
-</ul>
-<p>服务器把你要的 <strong>页面返回</strong>给浏览器，然后浏览器把 <strong>页面渲染</strong>在你的眼前，完事。</p>
-<p>当然事实上不会这么轻易的就返回给你的，浏览器得判断一下你有没有资格来拿这个页面，所谓 <strong>资格</strong>，简单来说，就是判断一下你（当前页面）和请求页面是不是一家的。<strong>判断标准</strong>就是你俩的<strong>域名(domain)</strong>，<strong>协议(protocol)</strong>，<strong>端口(port)</strong> 是不是一样的，一样的，你拿去，不一样，那对不起，你没有资格拿到这个页面。对，判断标准就是<strong>同源策略</strong>。当你拿不到这个页面的时候，就是出现了跨域的问题了。</p>
-<p>好，废话这么多，总结一下：</p>
+        <p>最近在写<a href="http://www.jeane.space/dict/dict_vue.html" target="_blank" rel="external">词典</a>程序，基本上常用的功能也都实现了，在这个过程中也学到了很多东西，极大地满足了个人的虚荣心。不过这个词典的数据接口有些不好使，嵌套层次也比较深，用起来会有些不方便。</p>
+<p>好吧，自己写个爬虫试试，万一成功了呢？</p>
+<p>在网上看了好几个前辈的分享，最终选择了大神alsotang的版本来进行“抄袭”，因为他给的<a href="https://github.com/alsotang/node-lessons/tree/master/lesson3" target="_blank" rel="external">代码</a>最简短了……</p>
 <ol>
-<li>跨域问题总是会出现在<strong>浏览器向服务器请求数据</strong>的时候</li>
-<li><strong>同源策略</strong>决定你需不需要跨域</li>
-<li><strong>AJAX</strong>总是出现在你向服务器要数据的时候，所以有些情况下AJAX和跨域扯到一起</li>
+<li>需要node.js的环境</li>
+<li>npm 安装Express、 cheerio、 superagent</li>
+<li>代码贴上，运行</li>
 </ol>
-<p>以上就是一个前端小白，对“跨域是什么”这个问题纠结的理解过程。。。</p>
+<p>OK，完事了。</p>
+<p>说一下今天遇到的问题：</p>
+<p>cheerio基本上可以当做jQuery来用。<br>在获取元素内容的时候，jQuery给了三个方法：html()、text()、val()。<br>今天只讨论前面两个：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>返回值:String<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    html([val|fn])</div><div class="line"><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>针对如上所示的h2进行测试，可以看到两个方法都对中文适应良好。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">'h2'</span>).text()</div><div class="line"><span class="comment">// "返回值:Stringhtml([val|fn])"</span></div><div class="line">$(<span class="string">'h2'</span>).html()</div><div class="line"><span class="comment">// "&lt;span&gt;返回值:String&lt;/span&gt;html([val|fn])"</span></div></pre></td></tr></table></figure></p>
+<p>然而，在cheerio中,直接使用两种方法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> $ = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</div><div class="line">$(<span class="string">'&lt;p&gt;中文测试&lt;/p&gt;'</span>).html()</div><div class="line"><span class="comment">// '&amp;#x4E2D;&amp;#x6587;&amp;#x6D4B;&amp;#x8BD5;' </span></div><div class="line">$(<span class="string">'&lt;p&gt;中文测试&lt;/p&gt;'</span>).text()</div><div class="line"><span class="comment">// '中文测试'</span></div></pre></td></tr></table></figure></p>
+<p>可以看到，html()方法反应怪异。</p>
+<p>而后，我又不死心去了cheerio的GitHub主页，发现有人遇到了同样的问题： <a href="https://github.com/cheeriojs/cheerio/issues/987" target="_blank" rel="external">issues#987</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</div><div class="line"><span class="keyword">const</span> $ = cheerio.load(<span class="string">'&lt;p&gt;中文测试&lt;/p&gt;'</span>, &#123;</div><div class="line">  <span class="attr">decodeEntities</span>: <span class="literal">false</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log($.html()); <span class="comment">// &lt;p&gt;中文测试&lt;/p&gt;</span></div></pre></td></tr></table></figure></p>
+<p>load方法第一个参数是需要处理的html文档内容，第二个参数是[options],默认为：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">withDomLvl1</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">normalizeWhitespace</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">xmlMode</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">decodeEntities</span>: <span class="literal">true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>所以在抓取中文文档的时候，还是多写一个选项参数吧……</p>
 
       
     </div>
@@ -381,8 +383,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Jeane_hexo/2017/03/13/‘js中的遍历和查找/" rel="next" title="js中的遍历和查找">
-                <i class="fa fa-chevron-left"></i> js中的遍历和查找
+              <a href="/Jeane_hexo/2017/03/17/跨域问题/" rel="next" title="跨域问题入门篇">
+                <i class="fa fa-chevron-left"></i> 跨域问题入门篇
               </a>
             
           </div>
@@ -390,10 +392,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Jeane_hexo/2017/03/21/第一个爬虫/" rel="prev" title="第一个爬虫">
-                第一个爬虫 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
