@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -284,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T19:40:37+08:00">
                 2017-03-29
@@ -373,6 +373,176 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/25/Web-Storage/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeane">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeane's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/Jeane_hexo/2017/03/25/Web-Storage/" itemprop="url">
+                  Web Storage
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T19:41:22+08:00">
+                2017-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Web-Storage"><a href="#Web-Storage" class="headerlink" title="Web Storage"></a>Web Storage</h4><p>Web Storage 用来给浏览器提供一种更直观的存储键值对的机制。</p>
+<p>包含： <strong>Window.sessionStorage</strong>、  <strong>Window.lacalStorage</strong></p>
+<ol>
+<li>Window.sessionStorage<ul>
+<li>提供对当前域的会话访问</li>
+<li>该存储区域在页面会话期间可用（浏览器在打开状态，包括重新加载和恢复）   </li>
+</ul>
+</li>
+<li>Window.lacalStorage<ul>
+<li>提供本地Storage对象的访问 </li>
+<li>该存储区域存储数据会保留在浏览器中</li>
+</ul>
+</li>
+</ol>
+<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><p>与localStorage常用来做对比的对象是：<strong>HTTP Cookie</strong>（也叫Web cookie或浏览器Cookie）<br>cookie是为了方便 <strong>保存http的状态信息</strong> 而产生的（http是无状态协议），它是服务器发送到用户浏览器并保存在浏览器上的一块数据，在发送http请求时在 <strong>浏览器和服务器之间来回传送</strong> 。<br>cookie常用于确定两次请求是否来自于同一个浏览器，从而能够确认和保持用户的登录状态。<br>在Web应用中，cookie常用来 <strong>标记用户</strong> 和 <strong>会话授权</strong>。也正因为这样，窃取cookie可以进行 <strong>会话劫持</strong> 或利用程序的漏洞进行 <strong>XSS攻击</strong>、 <strong>跨站请求伪造（CSRF）</strong>，存在着网络安全隐患</p>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>访问对象</th>
+<th>过期时间</th>
+<th>大小</th>
+<th>同源窗口是否共享</th>
+<th>是否发送</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sessionStorage</td>
+<td>当前域的会话</td>
+<td>浏览器关闭时</td>
+<td>5M内</td>
+<td>不共享（待验证）</td>
+<td>仅本地存储</td>
+</tr>
+<tr>
+<td>localStorage</td>
+<td>本地Storage对象</td>
+<td>没有</td>
+<td>5M内</td>
+<td>共享</td>
+<td>仅本地存储</td>
+</tr>
+<tr>
+<td>cookie</td>
+<td>来自服务器</td>
+<td>存在，可设置</td>
+<td>4k</td>
+<td>共享</td>
+<td>在http请求中携带</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/21/第一个爬虫/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -410,7 +580,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T19:34:01+08:00">
                 2017-03-21
@@ -544,7 +714,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T16:03:30+08:00">
                 2017-03-17
@@ -685,7 +855,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-13T18:45:34+08:00">
                 2017-03-13
@@ -833,7 +1003,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T11:34:25+08:00">
                 2017-03-10
@@ -988,7 +1158,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-03T15:31:09+08:00">
                 2017-03-03
@@ -1121,8 +1291,8 @@ hexo deploy
           
             <div class="site-state-item site-state-posts">
               <a href="/Jeane_hexo/archives">
-                <span class="site-state-item-count">6</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -1176,7 +1346,7 @@ hexo deploy
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
