@@ -1,0 +1,729 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/Jeane_hexo/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/Jeane_hexo/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/Jeane_hexo/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/Jeane_hexo/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这是百度前端学院前端基础部分的一个题目，使用HTML和CSS完成类似Bootstrap的12栏栅格布局
+在Bootstrap官网上有关于栅格系统实现的说明。栅格系统基于flexbox构建，通过设置行和列来进行布局。
+这个大问题主要涉及到：
+
+flex布局
+对每一行进行切割，对列宽（在每一行中的比例）的控制
+响应式效果的实现
+
+flex布局为了尽量简单明了，先来一段最简单的结构。12345&amp;lt;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap 栅格布局实现">
+<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/04/07/纯css实现 Bootstrap 栅格布局/index.html">
+<meta property="og:site_name" content="Jeane's Blog">
+<meta property="og:description" content="这是百度前端学院前端基础部分的一个题目，使用HTML和CSS完成类似Bootstrap的12栏栅格布局
+在Bootstrap官网上有关于栅格系统实现的说明。栅格系统基于flexbox构建，通过设置行和列来进行布局。
+这个大问题主要涉及到：
+
+flex布局
+对每一行进行切割，对列宽（在每一行中的比例）的控制
+响应式效果的实现
+
+flex布局为了尽量简单明了，先来一段最简单的结构。12345&amp;lt;s">
+<meta property="og:updated_time" content="2017-04-07T16:35:27.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap 栅格布局实现">
+<meta name="twitter:description" content="这是百度前端学院前端基础部分的一个题目，使用HTML和CSS完成类似Bootstrap的12栏栅格布局
+在Bootstrap官网上有关于栅格系统实现的说明。栅格系统基于flexbox构建，通过设置行和列来进行布局。
+这个大问题主要涉及到：
+
+flex布局
+对每一行进行切割，对列宽（在每一行中的比例）的控制
+响应式效果的实现
+
+flex布局为了尽量简单明了，先来一段最简单的结构。12345&amp;lt;s">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/Jeane_hexo/',
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/04/07/纯css实现 Bootstrap 栅格布局/"/>
+
+
+
+
+
+  <title> Bootstrap 栅格布局实现 | Jeane's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/Jeane_hexo/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Jeane's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/Jeane_hexo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/Jeane_hexo/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/Jeane_hexo/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/04/07/纯css实现 Bootstrap 栅格布局/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeane">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeane's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Bootstrap 栅格布局实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T19:34:01+08:00">
+                2017-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是<a href="http://ife.baidu.com/course/detail/id/104?t=1491574770677#learn" target="_blank" rel="external">百度前端学院</a>前端基础部分的一个题目，使用HTML和CSS完成类似Bootstrap的12栏栅格布局</p>
+<p>在Bootstrap官网上有关于栅格系统实现的说明。栅格系统基于flexbox构建，通过设置行和列来进行布局。</p>
+<p>这个大问题主要涉及到：</p>
+<ol>
+<li>flex布局</li>
+<li>对每一行进行切割，对列宽（在每一行中的比例）的控制</li>
+<li>响应式效果的实现</li>
+</ol>
+<h4 id="flex布局"><a href="#flex布局" class="headerlink" title="flex布局"></a>flex布局</h4><p>为了尽量简单明了，先来一段最简单的结构。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>01<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>02<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span>03<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>其中div元素是我们需要布局的元素，section为其父元素，也就是flex的容器。<br>我们只需要设置section为容器就好了。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">     <span class="attribute">display</span>: flex;</div><div class="line">     <span class="attribute">flex-wrap</span>: wrap;</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<h4 id="切割"><a href="#切割" class="headerlink" title="切割"></a>切割</h4><p>使用过Bootstrap的同学都知道，它是通过给div元素添加”col-md-*”等类来控制元素的宽度的。所以，所有对div的设置都要在对应的类上进行设置。<br>此时 html 结构为：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-3"</span>&gt;</span>01<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-4"</span>&gt;</span>02<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-5"</span>&gt;</span>03<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>对相应的类进行设置：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.col-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-2</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">16.66%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-3</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">25%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-4</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">33.33%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-5</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">41.66%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-6</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">50%</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-7</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">58.33%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-8</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">66.66%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-9</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">75%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-10</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">83.33%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-11</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">91.66%</span>; </div><div class="line">&#125; </div><div class="line"><span class="selector-class">.col-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>需要注意的一点是，div的宽度跟行宽成绝对比例的，也就是说必须能精确设置div的宽度，因此必须修改div的盒子模型为”border-box”,这样比例关系就不会再受到border的影响了。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">box-sizing</span>: border-box;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>到此为止，最简陋的栅格布局已经成型了。</p>
+<p>继续完成任务</p>
+<h4 id="响应式实现"><a href="#响应式实现" class="headerlink" title="响应式实现"></a>响应式实现</h4><p>响应式主要是通过媒体查询来实现的。Bootstrap提供了五个层级。</p>
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>超小</th>
+<th>小</th>
+<th>中</th>
+<th>大</th>
+<th>超大</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>宽度</td>
+<td>&lt;576px</td>
+<td>&gt;=576px</td>
+<td>&gt;=768px</td>
+<td>&gt;=992px</td>
+<td>&gt;=1200px</td>
+</tr>
+<tr>
+<td>类名</td>
+<td>.col-</td>
+<td>.col-sm-</td>
+<td>.col-md-</td>
+<td>.col-lg-</td>
+<td>.col-xl-</td>
+</tr>
+</tbody>
+</table>
+<p>所以，可以通过 @media 设置四个断点: 576px, 768px, 992px, 1200px 。 再分别对带有层级前缀的类进行设置<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 超小 */</span></div><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">576px</span>)&#123;</div><div class="line">    <span class="selector-class">.col-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 省略中间十个类的设置。。。 */</span></div><div class="line">    <span class="selector-class">.col-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 小 */</span></div><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">768px</span>)&#123;</div><div class="line">    <span class="selector-class">.col-sm-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 省略中间十个类的设置。。。 */</span></div><div class="line">    <span class="selector-class">.col-sm-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 中 */</span></div><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">992px</span>)&#123;</div><div class="line">    <span class="selector-class">.col-md-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 省略中间十个类的设置。。。 */</span></div><div class="line">    <span class="selector-class">.col-md-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 大 */</span></div><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">1200px</span>)&#123;</div><div class="line">    <span class="selector-class">.col-lg-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 省略中间十个类的设置。。。 */</span></div><div class="line">    <span class="selector-class">.col-lg-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* 超大 */</span></div><div class="line">@<span class="keyword">media</span> all and (min-width: <span class="number">1200px</span>)&#123;</div><div class="line">    <span class="selector-class">.col-xl-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">8.33%</span>; </div><div class="line">    &#125;</div><div class="line">    <span class="comment">/* 省略中间十个类的设置。。。 */</span></div><div class="line">    <span class="selector-class">.col-xl-12</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>给div添加不同的类，在不同的宽度下，div会响应到不同的宽度<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-2 col-md-4 col-sm-6"</span>&gt;</span>01<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-8 col-md-4 col-sm-6"</span>&gt;</span>02<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-2 col-md-4 col-sm-12"</span>&gt;</span>03<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>具有响应式的布局的栅格布局完成</p>
+<h4 id="最后一个问题，如何能进行margin设置？"><a href="#最后一个问题，如何能进行margin设置？" class="headerlink" title="最后一个问题，如何能进行margin设置？"></a>最后一个问题，如何能进行margin设置？</h4><p>这个问题是用一个障眼法解决的。。。<br>对div设置了盒子模型为border-box后，它的padding会被计算在width中，所以可以将看起来是margin的部分处理为div的padding，而显示出来的div则为它的子元素。<br>代码如下 ：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span> &#123;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">    <span class="comment">/* 上面代码中的border抹掉。。。*/</span></div><div class="line">&#125;</div><div class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span> &#123;</div><div class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#eee</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-2 col-md-4 col-sm-6"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>01<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-8 col-md-4 col-sm-6"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>02<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-2 col-md-4 col-sm-12"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>03<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>恩，在模拟栅格布局中的问题大概就这么多啦~</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Jeane_hexo/2017/03/29/盲点/" rel="next" title="CSS盒模型的box-sizing">
+                <i class="fa fa-chevron-left"></i> CSS盒模型的box-sizing
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Jeane_hexo/2017/04/08/纯css实现 Bootstrap 栅格布局/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400"
+               alt="Jeane" />
+          <p class="site-author-name" itemprop="name">Jeane</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/Jeane_hexo/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#flex布局"><span class="nav-number">1.</span> <span class="nav-text">flex布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#切割"><span class="nav-number">2.</span> <span class="nav-text">切割</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#响应式实现"><span class="nav-number">3.</span> <span class="nav-text">响应式实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#最后一个问题，如何能进行margin设置？"><span class="nav-number">4.</span> <span class="nav-text">最后一个问题，如何能进行margin设置？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jeane</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/Jeane_hexo/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/Jeane_hexo/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/Jeane_hexo/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
