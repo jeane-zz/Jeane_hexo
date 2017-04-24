@@ -87,28 +87,16 @@
 
 
 
-<meta name="description" content="一直以来总觉得CSS盒模型只要理解了就一切ok了，然。。今天被问到 对元素的width进行设置，这个width包括哪些内容 ，挂了。
-box-sizing用于改变默认的CSS盒子模型
-它的取值可以为 content-box(默认值) 、border-box 、inherit、initial、unset（后面三种不进行讨论）
-
-content-box:标准盒子模型。width和height仅包含内容">
+<meta name="description" content="DOM结构本身就是树结构，即对DOM结构的遍历就是对多叉树的遍历。以如下的html结构为例1234567891011&amp;lt;div class=&amp;quot;root&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;        &amp;lt;section class=&amp;quot;sidebar&amp;quot; &amp;gt;            &amp;lt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CSS盒模型的box-sizing">
-<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/03/29/盲点/index.html">
+<meta property="og:title" content="数据结构实现对DOM节点的遍历">
+<meta property="og:url" content="https://jeane-zz.github.io/Jeane_hexo/2017/04/21/数据结构实现对DOM节点的遍历/index.html">
 <meta property="og:site_name" content="Jeane's Blog">
-<meta property="og:description" content="一直以来总觉得CSS盒模型只要理解了就一切ok了，然。。今天被问到 对元素的width进行设置，这个width包括哪些内容 ，挂了。
-box-sizing用于改变默认的CSS盒子模型
-它的取值可以为 content-box(默认值) 、border-box 、inherit、initial、unset（后面三种不进行讨论）
-
-content-box:标准盒子模型。width和height仅包含内容">
-<meta property="og:updated_time" content="2017-03-29T14:44:51.199Z">
+<meta property="og:description" content="DOM结构本身就是树结构，即对DOM结构的遍历就是对多叉树的遍历。以如下的html结构为例1234567891011&amp;lt;div class=&amp;quot;root&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;        &amp;lt;section class=&amp;quot;sidebar&amp;quot; &amp;gt;            &amp;lt">
+<meta property="og:updated_time" content="2017-04-24T16:49:56.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CSS盒模型的box-sizing">
-<meta name="twitter:description" content="一直以来总觉得CSS盒模型只要理解了就一切ok了，然。。今天被问到 对元素的width进行设置，这个width包括哪些内容 ，挂了。
-box-sizing用于改变默认的CSS盒子模型
-它的取值可以为 content-box(默认值) 、border-box 、inherit、initial、unset（后面三种不进行讨论）
-
-content-box:标准盒子模型。width和height仅包含内容">
+<meta name="twitter:title" content="数据结构实现对DOM节点的遍历">
+<meta name="twitter:description" content="DOM结构本身就是树结构，即对DOM结构的遍历就是对多叉树的遍历。以如下的html结构为例1234567891011&amp;lt;div class=&amp;quot;root&amp;quot;&amp;gt;    &amp;lt;div class=&amp;quot;container&amp;quot;&amp;gt;        &amp;lt;section class=&amp;quot;sidebar&amp;quot; &amp;gt;            &amp;lt">
 
 
 
@@ -136,13 +124,13 @@ content-box:标准盒子模型。width和height仅包含内容">
 
 
 
-  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/03/29/盲点/"/>
+  <link rel="canonical" href="https://jeane-zz.github.io/Jeane_hexo/2017/04/21/数据结构实现对DOM节点的遍历/"/>
 
 
 
 
 
-  <title> CSS盒模型的box-sizing | Jeane's Blog </title>
+  <title> 数据结构实现对DOM节点的遍历 | Jeane's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -261,7 +249,7 @@ content-box:标准盒子模型。width和height仅包含内容">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/29/盲点/">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/04/21/数据结构实现对DOM节点的遍历/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jeane">
@@ -282,7 +270,7 @@ content-box:标准盒子模型。width和height仅包含内容">
             
             
               
-                CSS盒模型的box-sizing
+                数据结构实现对DOM节点的遍历
               
             
           </h1>
@@ -297,8 +285,8 @@ content-box:标准盒子模型。width和height仅包含内容">
               
                 <span class="post-meta-item-text">Veröffentlicht am</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T19:40:37+08:00">
-                2017-03-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T22:29:15+08:00">
+                2017-04-21
               </time>
             
 
@@ -333,15 +321,9 @@ content-box:标准盒子模型。width和height仅包含内容">
       
 
       
-        <p>一直以来总觉得CSS盒模型只要理解了就一切ok了，然。。今天被问到 <strong>对元素的width进行设置，这个width包括哪些内容</strong> ，挂了。</p>
-<p>box-sizing用于改变默认的CSS盒子模型</p>
-<p>它的取值可以为 <strong>content-box(默认值)</strong> 、<strong>border-box</strong> 、inherit、initial、unset（后面三种不进行讨论）</p>
-<ul>
-<li>content-box:标准盒子模型。width和height仅包含内容的宽和高</li>
-<li>border-box:width和height包括content、padding、border。</li>
-</ul>
-<p>另外：<br>background-clip：border-box(默认值)、 padding-box、 content-box<br>用于设置元素的背景是否延伸到边框下面</p>
-<p>background-origin：border-box、 padding-box(默认值)、 content-box<br>用于设置元素的背景图片从盒子模型的何处开始渲染</p>
+        <p>DOM结构本身就是树结构，即对DOM结构的遍历就是对多叉树的遍历。<br>以如下的html结构为例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;root&quot;&gt;</div><div class="line">    &lt;div class=&quot;container&quot;&gt;</div><div class="line">        &lt;section class=&quot;sidebar&quot; &gt;</div><div class="line">            &lt;ul class=&quot;menu&quot; &gt;&lt;/ul&gt;</div><div class="line">        &lt;/section&gt;</div><div class="line">        &lt;section class=&quot;main&quot; &gt;</div><div class="line">            &lt;article class=&quot;post&quot;&gt;&lt;/article&gt;</div><div class="line">            &lt;p class=&quot;copyright&quot; &gt;&lt;/p&gt;</div><div class="line">        &lt;/section&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>深度优先遍历：对每一个可能的分支一直深入直到最内层的子节点。每一个分支都可以看做是一个缩小版的多叉树，遍历采用递归方式实现，采用栈结构来模拟实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rootNode = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'root'</span>)[<span class="number">0</span>]</div><div class="line"><span class="keyword">const</span> result1 = []</div><div class="line"></div><div class="line">deepMapNode(rootNode)</div><div class="line"><span class="comment">// 深度优先遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepMapNode</span>(<span class="params">root</span>) </span>&#123;</div><div class="line">    result1.push(root)</div><div class="line">    </div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; root.children.length; i++) &#123;</div><div class="line">        <span class="keyword">var</span> child = root.children[i]</div><div class="line">        <span class="keyword">if</span>(child.children.length &gt; <span class="number">0</span>) &#123;</div><div class="line">            deepMapNode(child)</div><div class="line">        &#125;<span class="keyword">else</span> &#123;</div><div class="line">            result1.push(root.children[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result1)</div></pre></td></tr></table></figure></p>
+<h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p>广度优先遍历：每一次都找当前距离根节点最近的元素（或者说是上层元素的直接子元素），直到最内层的子节点。这种情况就相当于打乱了树的结构，不能继续使用递归，通过队列结构实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> rootNode = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'root'</span>)[<span class="number">0</span>]</div><div class="line"><span class="keyword">const</span> result2 = []</div><div class="line"><span class="keyword">const</span> queue = [rootNode]</div><div class="line"></div><div class="line">wideMapNode(rootNode)</div><div class="line"><span class="comment">// 广度优先遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">wideMapNode</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">while</span>(queue.length) &#123;</div><div class="line">        root = queue[<span class="number">0</span>]</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; root.children.length; i++) &#123;</div><div class="line">            <span class="keyword">var</span> child = root.children[i]</div><div class="line">            queue.push(child)</div><div class="line">        &#125;</div><div class="line">        result2.push(queue.shift())</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(result2)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -372,8 +354,8 @@ content-box:标准盒子模型。width和height仅包含内容">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Jeane_hexo/2017/03/25/Web-Storage/" rel="next" title="Web Storage">
-                <i class="fa fa-chevron-left"></i> Web Storage
+              <a href="/Jeane_hexo/2017/04/15/获取DOM节点的方法/" rel="next" title="获取DOM节点的方法">
+                <i class="fa fa-chevron-left"></i> 获取DOM节点的方法
               </a>
             
           </div>
@@ -381,10 +363,6 @@ content-box:标准盒子模型。width和height仅包含内容">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Jeane_hexo/2017/04/07/栅格布局模拟实现/" rel="prev" title="栅格布局模拟实现">
-                栅格布局模拟实现 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -431,8 +409,17 @@ content-box:标准盒子模型。width和height仅包含内容">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400"
@@ -476,6 +463,22 @@ content-box:标准盒子模型。width和height仅包含内容">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先遍历"><span class="nav-number">1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先遍历"><span class="nav-number">2.</span> <span class="nav-text">广度优先遍历</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
