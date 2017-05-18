@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -237,6 +237,142 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/05/12/行末的省略号设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jeane">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeane's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/Jeane_hexo/2017/05/12/行末的省略号设置/" itemprop="url">
+                  行末的省略号设置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T10:59:16+08:00">
+                2017-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>单行文本溢出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">    <span class="attribute">white-space</span>: nowrap;</div><div class="line">    <span class="attribute">text-overflow</span>:ellipsis;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>设置要点：</p>
+<ol>
+<li>元素宽度要小于文本单行长度，</li>
+<li>同时保持单行文本不折行</li>
+<li>1、2共同作用造成文本溢出，显示省略符号来代表被修剪的文本</li>
+<li>溢出文本不显示</li>
+</ol>
+<p>多行文本溢出：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">25px</span>;</div><div class="line">    <span class="attribute">overflow </span>: hidden;</div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;</div><div class="line">    <span class="attribute">display</span>: -webkit-box;</div><div class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</div><div class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>设置要点：</p>
+<ol>
+<li>元素宽度要小于文本单行长度，出现文本折行的情况</li>
+<li>一定要设置高度和行高。</li>
+<li>元素高度和行高成比例，若希望省略号出现在最后一行，则 -webkit-line-clamp的值即为该比例。-webkit-line-clamp 的值n表示在第 n 行末尾产生省略号</li>
+<li>辅助设置：display: -webkit-box; -webkit-box-orient: vertical;</li>
+<li>仅适用于webkit内核浏览器</li>
+<li>省略号相当于插入到句子内部，不替换句子中原来的字符</li>
+</ol>
+<p>jsbin线上演示：<a href="http://jsbin.com/tapamugune/edit?html,css,output" target="_blank" rel="external">地址</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -284,7 +420,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-21T22:29:15+08:00">
                 2017-04-21
@@ -404,7 +540,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-15T20:15:17+08:00">
                 2017-04-15
@@ -576,7 +712,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T19:22:50+08:00">
                 2017-04-12
@@ -694,7 +830,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-07T19:28:46+08:00">
                 2017-04-07
@@ -863,7 +999,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T19:40:37+08:00">
                 2017-03-29
@@ -989,7 +1125,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-25T19:41:22+08:00">
                 2017-03-25
@@ -1159,7 +1295,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T19:34:01+08:00">
                 2017-03-21
@@ -1293,7 +1429,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T16:03:30+08:00">
                 2017-03-17
@@ -1434,7 +1570,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-13T18:45:34+08:00">
                 2017-03-13
@@ -1536,161 +1672,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://jeane-zz.github.io/Jeane_hexo/Jeane_hexo/2017/03/10/中缀表达式转化为后缀表达式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Jeane">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://avatars3.githubusercontent.com/u/21193997?v=3&u=4710af496e4179bb64e5fee51807c625eb637808&s=400">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Jeane's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/Jeane_hexo/2017/03/10/中缀表达式转化为后缀表达式/" itemprop="url">
-                  中缀表达式转化为后缀表达式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-10T11:34:25+08:00">
-                2017-03-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="中缀表达式"><a href="#中缀表达式" class="headerlink" title="中缀表达式"></a>中缀表达式</h2><pre><code>通常来说，中缀表达式即符合我们平时书写习惯的表达式。
-如 计算式 
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'1 + 2 * (3 - 4)'</span></div></pre></td></tr></table></figure>
-<pre><code>它的特征即，操作符在操作数中间
-如果将计算式转化为二叉树，那么中缀表达式即为中序遍历的结果
-</code></pre><h2 id="后缀表达式"><a href="#后缀表达式" class="headerlink" title="后缀表达式"></a>后缀表达式</h2><pre><code>后缀表达式，更符合计算机运算的内部存储结构——栈。
-将上面式子写成后缀表达式
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'1 2 3 4 - * +'</span></div></pre></td></tr></table></figure>
-<pre><code>它的特征即，操作符在操作数后面
-同时，去掉了可以改变运算优先级的括号，这样计算机在运算时就不用再考虑优先级的问题了
-后缀表达式是二叉树后序遍历的结果
-</code></pre><h2 id="转化过程"><a href="#转化过程" class="headerlink" title="转化过程"></a>转化过程</h2><ul>
-<li><p>借助二叉树图形化理解过程<br>  其实中缀表达式转后缀表达式就是同一棵二叉树由中序遍历结果转化为后序遍历结果<br>  单单只有中序遍历结果是不能得到唯一的后序遍历结果的<br>  所以在处理时，要对操作符的优先级进行设置，得到唯一的遍历结果</p>
-</li>
-<li><p>具体转化步骤<br>  在转化之前需明确：<br>  输入： 中缀表示式 &gt; inputStr<br>  输出： 后缀表达式 &gt; outputStr<br>  工具： 计算机调用栈 &gt; stack<br>  步骤：</p>
-<pre><code>1. 对输入串进行遍历，每次得到input[i]，对每个input[i]进行判断
-2. 若input[i]为数字，添加到outputStr
-3. 若input[i]为左括号，添加到stack
-4. 若input[i]为右括号，将stack中左括号之前的操作符添加到outputStr,左括号出栈
-5. 若input[i]为操作符，
-   当出现下面三种情况之一时，直接添加到stack
-   - stack 为空
-   - stack 栈顶 为 左括号
-   - 当前input[i]的优先级高于栈顶操作符优先级
-   其他情况，先将栈顶元素出栈后，再将input[i]添加到stack
-6. 遍历结束
-7. 若stack中仍有操作符，出栈，添加到outputStr
-</code></pre></li>
-</ul>
-<h2 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h2><pre><code>在js中，处理数组比处理字符串更方便些，本例中将输入输出都处理成了数组。栈也由数组进行模拟。
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toRPN</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> inputStr = str.replace(<span class="regexp">/\./g</span>,<span class="string">'_'</span>)</div><div class="line">                  .replace(<span class="regexp">/（/g</span>,<span class="string">'('</span>)</div><div class="line">                  .replace(<span class="regexp">/）/g</span>,<span class="string">')'</span>)</div><div class="line">                  .replace(<span class="regexp">/(\W)/g</span>, <span class="string">' $&amp; '</span>)</div><div class="line">                  .replace(<span class="regexp">/_/g</span>,<span class="string">'.'</span>)</div><div class="line">                  .split(<span class="string">' '</span>)</div><div class="line">                  .filter(<span class="function"><span class="params">it</span> =&gt;</span> it != <span class="string">''</span>)</div><div class="line">    <span class="keyword">var</span> outputStr = []</div><div class="line">    <span class="keyword">var</span> stack = []</div><div class="line">    <span class="comment">// 操作符 数组</span></div><div class="line">    <span class="keyword">var</span> opArr = [<span class="string">'+'</span>,<span class="string">'-'</span>,<span class="string">'*'</span>,<span class="string">'/'</span>]</div><div class="line">    inputStr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">Number</span>.isNaN(<span class="built_in">Number</span>(value)) == <span class="literal">false</span>) &#123;</div><div class="line">            outputStr.push(value)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(value == <span class="string">'('</span>) &#123;</div><div class="line">            stack.push(value)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(value == <span class="string">')'</span>) &#123;</div><div class="line">            <span class="keyword">while</span>(stack[stack.length - <span class="number">1</span>] != <span class="string">'('</span>)&#123;</div><div class="line">                outputStr.push(stack.pop())</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(stack[stack.length - <span class="number">1</span>] == <span class="string">'('</span>)&#123;</div><div class="line">                stack.pop()</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">while</span>(stack.length &gt; <span class="number">0</span> </div><div class="line">                &amp;&amp; </div><div class="line">                stack[stack.length - <span class="number">1</span>] != <span class="string">'('</span> </div><div class="line">                &amp;&amp; </div><div class="line">                property(value) &lt;= property(stack[stack.length - <span class="number">1</span>]))&#123;</div><div class="line">                outputStr.push(stack.pop())</div><div class="line">            &#125;</div><div class="line">            stack.push(value)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">    <span class="keyword">while</span>(stack.length &gt; <span class="number">0</span>) &#123;</div><div class="line">        outputStr.push(stack.pop())</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> outputStr</div><div class="line">    <span class="comment">// 判断是否操作数</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isOperator</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(opArr.indexOf(v) &gt; <span class="number">-1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 判断操作符优先级</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">property</span>(<span class="params">v</span>) </span>&#123;</div><div class="line">        <span class="keyword">switch</span>(v)&#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'+'</span>:</div><div class="line">            <span class="keyword">case</span> <span class="string">'-'</span>: <span class="keyword">return</span> <span class="number">1</span></div><div class="line">            <span class="keyword">case</span> <span class="string">'*'</span>:</div><div class="line">            <span class="keyword">case</span> <span class="string">'/'</span>: <span class="keyword">return</span> <span class="number">2</span></div><div class="line">            <span class="keyword">default</span>: <span class="keyword">return</span> <span class="number">0</span>       </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li><p>示例 ：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">'1 +2 * 3 - (4 +5) /6'</span></div><div class="line">toRPN(str)</div><div class="line"><span class="comment">// ["1", "2", "3", "*", "4", "5", "+", "6", "/", "-", "+"]</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>附 ：<br>  已经处理了输入字符串中的中文括号和空格<br>  小数点涉及到的情况较多，暂时只处理了最简单的</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1740,8 +1721,8 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/Jeane_hexo/archives">
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">Artikel</span>
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1795,7 +1776,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
